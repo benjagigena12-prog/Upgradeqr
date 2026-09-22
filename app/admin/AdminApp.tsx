@@ -203,6 +203,7 @@ export default function AdminApp() {
               <th>Código</th>
               <th>Estado</th>
               <th>URL de Google Reviews</th>
+              <th>QR</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -272,6 +273,18 @@ function CardRow({
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://search.google.com/local/writereview?placeid=..."
         />
+      </td>
+      <td>
+        <a
+          className="link-button"
+          href={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(
+            `${SITE_URL}/${card.code}`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver / Descargar QR
+        </a>
       </td>
       <td className="actions-cell">
         <button onClick={handleSave} disabled={saving}>
